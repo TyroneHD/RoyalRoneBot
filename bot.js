@@ -1,8 +1,8 @@
 var discord = require('discord.js');
 var roblox = require('roblox-js');
 var client = new discord.Client();
-var token = "Mzg5NDA3OTQ2NTU3MjI3MDE1.DQ8kMg._f0blgntEZb0g6cbKMte1bg3_1E"
-client.login(token)
+
+client.login(process.env.BOT_TOKEN)
 
 
 client.on("ready", () => {
