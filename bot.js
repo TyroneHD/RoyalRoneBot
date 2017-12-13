@@ -195,6 +195,6 @@ client.on('message', (message) => {
     	message.channel.send(`:ok_hand: | **${message.author.username}**, thanks for pinging!`)
     }
     if(isCommand('Links', message)){
-    	message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links! \n**Group: https://www.roblox.com/My/Groups.aspx?gid=2720853\nDatabase: https://docs.google.com/spreadsheets/d/1W-7drPuCMIbTI_BIEM4RDd_a6u4MGp85c3K7xio7Ijs/edit?usp=sharing\nTwitter: https://twitter.com/yeetfleetrblx**`)
+    	message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links! \n**Group: <http://bit.ly/2z9fCKh>\nDatabase: <http://bit.ly/2z9RbfW>\nTwitter: <http://bit.ly/2nZ3Sqt>**`)
     }
 }); 
