@@ -191,6 +191,61 @@ client.on('message', (message) => {
     		return;
     	}
     }
+    if(isCommand('Exile', message)){
+    	if(isAdmin(message)){
+    		var username = args[1]
+    		if (username){
+    			roblox.getIdFromUsername(username)
+				.then(function(id){
+					roblox.getRankInGroup(groupId, id)
+					.then(function(rank){
+						if(maximumRank <= rank){
+							message.channel.send(`${message.author} | ${username} is Council and cannot be exiled.`)
+						} else {
+							roblox.exile(groupId, id, true)
+							.then(function(roles){
+								var embed = {
+ 								"title": "Exiling",
+ 								"description": `Make sure to remove them from the Discord server.`,
+  								"timestamp": new Date(),
+  								"footer": {
+    								"text": "Created by tyr_hd#9291"
+  								},
+  								"thumbnail": {
+    								"url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
+  								},
+  								"author": {
+    								"name": "The Royal Rone",
+    								"icon_url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
+  								},
+  								"fields": [
+    								{
+      								"name": "Rank Updated",
+      								"value": "No rank. (Removed from group.)"
+    								},
+    								{
+      								"name": "Player Updated",
+      								"value": `[${username}](https://www.roblox.com/users/${id}/profile)`
+    								}
+  								]
+								};
+								message.channel.send(`${message.author} | User has been exiled.`, { embed });
+							}).catch(function(err){
+								message.channel.send(`${message.author} | Failed to exile.`)
+							});
+						}
+					}).catch(function(err){
+						message.channel.send(`${message.author} | Couldn't get them in the group.`)
+					});
+				}).catch(function(err){ 
+					message.channel.send(`${message.author} | Sorry, but ${username} doesn't exist on ROBLOX.`)
+				});
+    		} else {
+    			message.channel.send(`${message.author} | Please enter a username.`)
+    		}
+    		return;
+    	}
+    }
     if(isCommand('Ping', message)){
     	message.channel.send(`:ok_hand: | **${message.author.username}**, thanks for pinging!`)
     }
