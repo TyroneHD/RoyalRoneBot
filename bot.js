@@ -202,7 +202,7 @@ client.on('message', (message) => {
 						if(maximumRank <= rank){
 							message.channel.send(`${message.author} | ${username} is Council and cannot be exiled.`)
 						} else {
-							roblox.exile(groupId, id, true)
+							roblox.exile(groupId, id, true, 254)
 							.then(function(roles){
 								var embed = {
  								"title": "Exiling",
