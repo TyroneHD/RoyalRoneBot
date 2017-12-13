@@ -191,45 +191,10 @@ client.on('message', (message) => {
     		return;
     	}
     }
-    if(isCommand('Game', message)){
-    	if(isAdmin(message)){
-    		var game = args[1]
-    		var username = args[2]
-    		if (username){
-    			roblox.getIdFromUsername(username)
-    			.then(function(id)){
-    				roblox.shout(groupId, `[GAME] ${username} is hosting ${game}! Follow here: https://www.roblox.com/users/${id}/profile`)
-    				var embed = {
- 						"title": "Exiling",
- 						"description": `Make sure to shout in #announcements.`,
-  						"timestamp": new Date(),
-  						"footer": {
-   							"text": "Created by tyr_hd#9291"
-  						},
-  						"thumbnail": {
-   							"url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
-  						},
-  						"author": {
-    						"name": "The Royal Rone",
-   							"icon_url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
-  						},
-  						"fields": [
-    						{
-      						"name": "Game Shouted",
-      						"value": game
-    						},
-   							{
-      						"name": "Player Shouted",
-      						"value": `[${username}](https://www.roblox.com/users/${id}/profile)`
-    						}
-  						]
-					};
-					message.channel.send(`${message.author} | ${game} has been shouted.`, { embed });
-    			}
-    		}
-    	}
-    }
     if(isCommand('Ping', message)){
     	message.channel.send(`:ok_hand: | **${message.author.username}**, thanks for pinging!`)
+    }
+    if(isCommand('Links', message)){
+    	message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links! \n[**Group**](https://www.roblox.com/My/Groups.aspx?gid=2720853)\n[**Database**](https://docs.google.com/spreadsheets/d/1W-7drPuCMIbTI_BIEM4RDd_a6u4MGp85c3K7xio7Ijs/edit?usp=sharing)\n[**Twitter**](https://twitter.com/yeetfleetrblx)`)
     }
 }); 
