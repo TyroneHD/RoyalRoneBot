@@ -63,7 +63,7 @@ console.log('Is an admin!')
 
 })
 
-roblox.login({username: "TyroneHDALT", password: "ploplops50"}).then((success) => {
+roblox.login({username: process.env.USERNAME, password: process.env.PASSWORD}).then((success) => {
 
 }).catch(() => {console.log("Failed to login.");});
 
