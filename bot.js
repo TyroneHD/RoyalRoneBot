@@ -202,13 +202,6 @@ client.on('message', (message) => {
     if(isCommand('Ping', message)){
     	message.channel.send(`:ok_hand: | Wagwan **${message.author.username}**, thanks for pinging!`)
     }
-    if(isCommand('8ball', message)){
-	if (args[1]){
-		message.channel.send(`fortunes[Math.floor(Math.random() * fortunes.length)`)
-	} else {
-		message.channel.send(`${message.author} | Please enter a yes or no question.`)
-	{
-    }
     if(isCommand('Links', message)){
     	message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n**Group:** <http://bit.ly/2z9fCKh>\n**Database:** <http://bit.ly/2z9RbfW>\n**Twitter:** <http://bit.ly/2nZ3Sqt>`)
     }
