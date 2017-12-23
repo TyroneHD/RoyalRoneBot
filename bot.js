@@ -192,7 +192,7 @@ client.on('message', (message) => {
     	}
     }
     if(isCommand('Ping', message)){
-    	message.channel.send(`:ok_hand: | **${message.author.username}**, thanks for pinging!`)
+    	message.channel.send(`:ok_hand: | Wagwan **${message.author.username}**, thanks for pinging!`)
     }
     if(isCommand('Links', message)){
     	message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n**Group:** <http://bit.ly/2z9fCKh>\n**Database:** <http://bit.ly/2z9RbfW>\n**Twitter:** <http://bit.ly/2nZ3Sqt>`)
