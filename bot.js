@@ -194,7 +194,7 @@ client.on('message', (message) => {
     	message.channel.send(`:ok_hand: | **${message.author.username}**, thanks for pinging!`)
     }
     if(isntCommand('Oof', message)){
-    	message.channel.send(`${message.author} | Saying oof; +1 Warning. (Notified @198457078799400960)`)
+    	message.channel.send(`${message.author} | Saying oof; +1 Warning. (Notified user.mention(198457078799400960))`)
     }
     if(isCommand('Links', message)){
     	message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n**Group:** <http://bit.ly/2z9fCKh>\n**Database:** <http://bit.ly/2z9RbfW>\n**Twitter:** <http://bit.ly/2nZ3Sqt>`)
