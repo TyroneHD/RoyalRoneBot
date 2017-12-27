@@ -70,7 +70,8 @@ function isCommand(command, message){
 	var content = message.content.toLowerCase();
 	return content.startsWith(prefix + command);
 }
-function isntCommand(command1, message){
+
+function isntCommand(command, message){
 	var command = command.toLowerCase();
 	var content = message.content.toLowerCase();
 	return content.startsWith(command);
