@@ -76,6 +76,11 @@ function isCommand(command, message){
 	var content = message.content.toLowerCase();
 	return content.startsWith(prefix + command);
 }
+function isntCommand(command, message){
+	var command = command.toLowerCase();
+	var content = message.content.toLowerCase();
+	return content.startsWith(command);
+}
 
 client.on('message', (message) => {
 	if (message.author.bot) return; // Dont answer yourself.
@@ -194,8 +199,8 @@ client.on('message', (message) => {
     if(isCommand('Ping', message)){
     	message.channel.send(`:ok_hand: | Wagwan **${message.author.username}**, thanks for pinging!`)
     }
-    if('Oof', message){
-    	message.channel.send(`:rage: | ${message.author}, OI MATE DON'T OOF AROUND HERE! \n${message.author}, OI MATE DON'T OOF AROUND HERE!\n${message.author}, OI MATE DON'T OOF AROUND HERE!\n${message.author}, OI MATE DON'T OOF AROUND HERE!\n${message.author}, OI MATE DON'T OOF AROUND HERE!`)
+    if(isntCommand('Oof', message)){
+    	message.channel.send(`:rage: | ${message.author}, OI MATE DON'T OOF AROUND HERE! \n:rage: | ${message.author}, OI MATE DON'T OOF AROUND HERE! \n:rage: | ${message.author}, OI MATE DON'T OOF AROUND HERE! \n:rage: | ${message.author}, OI MATE DON'T OOF AROUND HERE! \n:rage: | ${message.author}, OI MATE DON'T OOF AROUND HERE! \n`)
     }
     if(isCommand('Links', message)){
     	message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n**Group:** <http://bit.ly/2z9fCKh>\n**Database:** <http://bit.ly/2z9RbfW>\n**Twitter:** <http://bit.ly/2nZ3Sqt>`)
