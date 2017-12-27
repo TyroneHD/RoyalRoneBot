@@ -79,7 +79,7 @@ function isCommand(command, message){
 
 client.on('message', (message) => {
 	if (message.author.bot) return; // Dont answer yourself.
-    var args = message.content.split(/[ ]+/)
+    var args = message.content.split(/[;]+/)
     
     if(isCommand('Promote', message)){
     	if (isAdmin(message)) {
@@ -194,7 +194,7 @@ client.on('message', (message) => {
     if(isCommand('Ping', message)){
     	message.channel.send(`:ok_hand: | Wagwan **${message.author.username}**, thanks for pinging!`)
     }
-    if(isCommand('Oof', message)){
+    if('Oof', message){
     	message.channel.send(`:rage: | @council **${message.author.username}**, just said oof and will be punished!`)
     }
     if(isCommand('Links', message)){
