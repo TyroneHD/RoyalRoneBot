@@ -24,12 +24,6 @@ client.on('guildMemberRemove', member => {
 
 var prefix = '!';
 
-function isCommand(command, message){
-	var command = command.toLowerCase();
-	var content = message.content.toLowerCase();
-	return content.startsWith(prefix + command);
-}
-
 function pluck(array){
     return array.map(function(item) { return item['name']; })
 }
@@ -84,7 +78,7 @@ function isntCommand(command, message){
 
 client.on('message', (message) => {
 	if (message.author.bot) return; // Dont answer yourself.
-    var args = message.content.split(/[;]+/)
+    var args = message.content.split(/[ ]+/)
     
     if(isCommand('Promote', message)){
     	if (isAdmin(message)) {
