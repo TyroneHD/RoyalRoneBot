@@ -70,7 +70,7 @@ function isCommand(command, message){
 	var content = message.content.toLowerCase();
 	return content.startsWith(prefix + command);
 }
-function isntCommand(command1, command2, command3, command4, command5, command6, message){
+function isntCommand(command1, message){
 	var command = command.toLowerCase();
 	var content = message.content.toLowerCase();
 	return content.startsWith(command);
@@ -193,7 +193,13 @@ client.on('message', (message) => {
     if(isCommand('Ping', message)){
     	message.channel.send(`:ok_hand: | **${message.author.username}**, thanks for pinging!`)
     }
-    if(isntCommand('Oof', '0of', '00f', 'O0f', 'Òof', 'oÒf', message)){
+    if(isntCommand('Oof', message)){
+    	message.channel.send(`${message.author} | Saying oof; +1 Warning. (Notified <@!198457078799400960>)`)
+    }
+    if(isntCommand('00f', message)){
+    	message.channel.send(`${message.author} | Saying oof; +1 Warning. (Notified <@!198457078799400960>)`)
+    }
+    if(isntCommand('Òof', message)){
     	message.channel.send(`${message.author} | Saying oof; +1 Warning. (Notified <@!198457078799400960>)`)
     }
     if(isCommand('Links', message)){
