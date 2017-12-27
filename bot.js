@@ -195,7 +195,7 @@ client.on('message', (message) => {
     	message.channel.send(`:ok_hand: | Wagwan **${message.author.username}**, thanks for pinging!`)
     }
     if('Oof', message){
-    	message.channel.send(`:rage: | @council **${message.author.username}**, just said oof and will be punished!`)
+    	message.channel.send(`:rage: | ${message.author}, OI MATE DON'T OOF AROUND HERE! \n${message.author}, OI MATE DON'T OOF AROUND HERE!\n${message.author}, OI MATE DON'T OOF AROUND HERE!\n${message.author}, OI MATE DON'T OOF AROUND HERE!\n${message.author}, OI MATE DON'T OOF AROUND HERE!`)
     }
     if(isCommand('Links', message)){
     	message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n**Group:** <http://bit.ly/2z9fCKh>\n**Database:** <http://bit.ly/2z9RbfW>\n**Twitter:** <http://bit.ly/2nZ3Sqt>`)
