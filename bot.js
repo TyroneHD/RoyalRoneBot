@@ -2,14 +2,6 @@ var discord = require('discord.js');
 var roblox = require('roblox-js');
 var client = new discord.Client();
 
-var fortunes = [
-	"Yes",
-	"No",
-	"Perhaps",
-	"Of course",
-	"Definitely not",
-];
-
 client.login(process.env.BOT_TOKEN)
 
 
@@ -201,6 +193,9 @@ client.on('message', (message) => {
     }
     if(isCommand('Ping', message)){
     	message.channel.send(`:ok_hand: | Wagwan **${message.author.username}**, thanks for pinging!`)
+    }
+    if(isCommand('Oof', message)){
+    	message.channel.send(`:rage: | @council **${message.author.username}**, just said oof and will be punished!`)
     }
     if(isCommand('Links', message)){
     	message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n**Group:** <http://bit.ly/2z9fCKh>\n**Database:** <http://bit.ly/2z9RbfW>\n**Twitter:** <http://bit.ly/2nZ3Sqt>`)
