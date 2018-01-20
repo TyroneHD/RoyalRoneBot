@@ -198,7 +198,7 @@ client.on('message', (message) => {
             .then(function(id){
             roblox.getRankInGroup(groupId, id)
                 .then(function(rank){
-                    message.channel.send(`${message.author} | ${username} (https://www.roblox.com/users/${id}/profile)`)
+                    message.channel.send(`${message.author} | **${username}** (https://www.roblox.com/users/${id}/profile)`)
                 })
             })
         } else {
