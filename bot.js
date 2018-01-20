@@ -192,47 +192,19 @@ client.on('message', (message) => {
     	}
     }
     if(isCommand('User', message)){
-    	var username = args[1]
-    	if (username){
-          roblox.getIdFromUsername(username)
-        .then(function(id){
-          roblox.getRankInGroup(groupId, id)
-          .then(function(rank){
-              .then(function(roles){
-                var embed = {
-                "title": "User Details",
-                "description": ``,
-                  "timestamp": new Date(),
-                  "footer": {
-                    "text": "Created by tyr_hd#9291"
-                  },
-                  "thumbnail": {
-                    "url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
-                  },
-                  "author": {
-                    "name": "The Royal Rone",
-                    "icon_url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
-                  },
-                  "fields": [
-                    {
-                      "name": "Rank Updated",
-                      "value": roles.oldRole.Name
-                    },
-                    {
-                      "name": "Player Updated",
-                      "value": `[${username}](https://www.roblox.com/users/${id}/profile)`
-                    }
-                  ]
-                };
-              });
-            }
-        }).catch(function(err){ 
-          message.channel.send(`${message.author} | Sorry, but ${username} doesn't exist on ROBLOX.`)
-        });
-          message.channel.send(`${message.author} | Please enter a username.`)
-        }
-        return;
-      }
+	    var username = args[1]
+	    if (username){
+		    roblox.getIdFromUsername(username)
+		    .then(function(id){
+			    roblox.getRankInGroup(groupId, id)
+			    .then(function(rank){
+				    message.channel.send(`${message.author} | ${username} (https://www.roblox.com/users/${id}/profile)`)
+			    }
+		    }
+	    } else {
+	    	message.channel.send(`${message.author} | Please enter a username.`)
+	    }
+	    return;
     }
     if(isCommand('Ping', message)){
     	message.channel.send(`:ok_hand: | **${message.author.username}**, pong!`)
