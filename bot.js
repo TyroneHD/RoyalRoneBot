@@ -195,12 +195,12 @@ client.on('message', (message) => {
         var username = args[1]
         if (username){
             roblox.getIdFromUsername(username)
-            .then(function(id)){
+            .then(function(id){
             roblox.getRankInGroup(groupId, id)
-                .then(function(rank)){
+                .then(function(rank){
                     message.channel.send(`${message.author} | ${username} (https://www.roblox.com/users/${id}/profile)`)
-                }
-            }
+                })
+            })
         } else {
             message.channel.send(`${message.author} | Please enter a username.`)
         }
