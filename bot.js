@@ -37,17 +37,17 @@ function hasRole(members, role){
 }
 
 function isAdmin(message){
-	if(
-		hasRole(message.member,"Commander") || 
-		hasRole(message.member,"Captain") ||  
-		hasRole(message.member,"Council") ||
-		hasRole(message.member,"testing")
-		){
+  if(
+    hasRole(message.member,"Commander") || 
+    hasRole(message.member,"Captain") ||  
+    hasRole(message.member,"Council") ||
+    hasRole(message.member,"testing")
+    ){
 
-		return true;
-	} else {
-		return false;
-	}
+    return true;
+  } else {
+    return false;
+  }
 }
 client.on('message', (message) => {
 
@@ -66,135 +66,149 @@ var maximumRank = 202;
 var minimumRank = 0;
 
 function isCommand(command, message){
-	var command = command.toLowerCase();
-	var content = message.content.toLowerCase();
-	return content.startsWith(prefix + command);
+  var command = command.toLowerCase();
+  var content = message.content.toLowerCase();
+  return content.startsWith(prefix + command);
 }
 
 function isntCommand(command, message){
-	var command = command.toLowerCase();
-	var content = message.content.toLowerCase();
-	return content.startsWith(command);
+  var command = command.toLowerCase();
+  var content = message.content.toLowerCase();
+  return content.startsWith(command);
 }
 
 client.on('message', (message) => {
-	if (message.author.bot) return; // Dont answer yourself.
+  if (message.author.bot) return; // Dont answer yourself.
     var args = message.content.split(/[ ]+/)
     
     if(isCommand('Promote', message)){
-    	if (isAdmin(message)) {
-    		var username = args[1]
-    		if (username){
-    			roblox.getIdFromUsername(username)
-				.then(function(id){
-					roblox.getRankInGroup(groupId, id)
-					.then(function(rank){
-						if(maximumRank <= rank){
-							message.channel.send(`${message.author} | ${username} cannot be promoted.`)
-						} else {
-							roblox.promote(groupId, id)
-							.then(function(roles){
-								var embed = {
- 								"title": "Promotion",
- 								"description": `Make sure to update Discord roles.`,
-  								"timestamp": new Date(),
-  								"footer": {
-    								"text": "Created by tyr_hd#9291"
-  								},
-  								"thumbnail": {
-    								"url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
-  								},
-  								"author": {
-    								"name": "The Royal Rone",
-    								"icon_url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
-  								},
-  								"fields": [
-    								{
-      								"name": "Rank Updated",
-      								"value": roles.newRole.Name
-    								},
-    								{
-      								"name": "Player Updated",
-      								"value": `[${username}](https://www.roblox.com/users/${id}/profile)`
-    								}
-  								]
-								};
-								message.channel.send(`${message.author} | User has been promoted.`, { embed });
-							}).catch(function(err){
-								message.channel.send(`${message.author} | Failed to promote.`)
-							});
-						}
-					}).catch(function(err){
-						message.channel.send(`${message.author} | Couldn't get him in the group.`)
-					});
-				}).catch(function(err){ 
-					message.channel.send(`${message.author} | Sorry, but ${username} doesn't exist on ROBLOX.`)
-				});
-    		} else {
-    			message.channel.send(`${message.author} | Please enter a username.`)
-    		}
-    		return;
-    	}
+      if (isAdmin(message)) {
+        var username = args[1]
+        if (username){
+          roblox.getIdFromUsername(username)
+        .then(function(id){
+          roblox.getRankInGroup(groupId, id)
+          .then(function(rank){
+            if(maximumRank <= rank){
+              message.channel.send(`${message.author} | ${username} cannot be promoted.`)
+            } else {
+              roblox.promote(groupId, id)
+              .then(function(roles){
+                var embed = {
+                "title": "Promotion",
+                "description": `Make sure to update Discord roles.`,
+                  "timestamp": new Date(),
+                  "footer": {
+                    "text": "Created by tyr_hd#9291"
+                  },
+                  "thumbnail": {
+                    "url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
+                  },
+                  "author": {
+                    "name": "The Royal Rone",
+                    "icon_url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
+                  },
+                  "fields": [
+                    {
+                      "name": "Rank Updated",
+                      "value": roles.newRole.Name
+                    },
+                    {
+                      "name": "Player Updated",
+                      "value": `[${username}](https://www.roblox.com/users/${id}/profile)`
+                    }
+                  ]
+                };
+                message.channel.send(`${message.author} | User has been promoted.`, { embed });
+              }).catch(function(err){
+                message.channel.send(`${message.author} | Failed to promote.`)
+              });
+            }
+          }).catch(function(err){
+            message.channel.send(`${message.author} | Couldn't get him in the group.`)
+          });
+        }).catch(function(err){ 
+          message.channel.send(`${message.author} | Sorry, but ${username} doesn't exist on ROBLOX.`)
+        });
+        } else {
+          message.channel.send(`${message.author} | Please enter a username.`)
+        }
+        return;
+      }
     }
     if (isCommand("Demote", message)) {
-    	if (isAdmin(message)) {
-    		var username = args[1]
-    		if (username){
-    			roblox.getIdFromUsername(username)
-				.then(function(id){
-					roblox.getRankInGroup(groupId, id)
-					.then(function(rank){
-						if(minimumRank >= rank){
-							message.channel.send(`${message.author} | ${username} is Council and cannot be demoted.`)
-						} else {
-							roblox.demote(groupId, id)
-							.then(function(roles){
-								var embed = {
- 								"title": "Demotion",
- 								"description": `Make sure to update Discord roles.`,
-  								"timestamp": new Date(),
-  								"footer": {
-    								"text": "Created by tyr_hd#9291"
-  								},
-  								"thumbnail": {
-    								"url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
-  								},
-  								"author": {
-    								"name": "The Royal Rone",
-    								"icon_url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
-  								},
-  								"fields": [
-    								{
-      								"name": "Rank Updated",
-      								"value": roles.newRole.Name
-    								},
-    								{
-      								"name": "Player Updated",
-      								"value": `[${username}](https://www.roblox.com/users/${id}/profile)`
-    								}
-  								]
-								};
-								message.channel.send(`${message.author} | User has been demoted.`, { embed });
-							}).catch(function(err){
-								message.channel.send(`${message.author} | Failed to demote.`)
-							});
-						}
-					}).catch(function(err){
-						message.channel.send(`${message.author} | Couldn't get him in the group.`)
-					});
-				}).catch(function(err){ 
-					message.channel.send(`${message.author} | Sorry, but ${username} doesn't exist on ROBLOX.`)
-				});
-    		} else {
-    			message.channel.send(`${message.author} | Please enter a username.`)
-    		}
-    		return;
-    	}
+      if (isAdmin(message)) {
+        var username = args[1]
+        if (username){
+          roblox.getIdFromUsername(username)
+        .then(function(id){
+          roblox.getRankInGroup(groupId, id)
+          .then(function(rank){
+            if(minimumRank >= rank){
+              message.channel.send(`${message.author} | ${username} is Council and cannot be demoted.`)
+            } else {
+              roblox.demote(groupId, id)
+              .then(function(roles){
+                var embed = {
+                "title": "Demotion",
+                "description": `Make sure to update Discord roles.`,
+                  "timestamp": new Date(),
+                  "footer": {
+                    "text": "Created by tyr_hd#9291"
+                  },
+                  "thumbnail": {
+                    "url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
+                  },
+                  "author": {
+                    "name": "The Royal Rone",
+                    "icon_url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
+                  },
+                  "fields": [
+                    {
+                      "name": "Rank Updated",
+                      "value": roles.newRole.Name
+                    },
+                    {
+                      "name": "Player Updated",
+                      "value": `[${username}](https://www.roblox.com/users/${id}/profile)`
+                    }
+                  ]
+                };
+                message.channel.send(`${message.author} | User has been demoted.`, { embed });
+              }).catch(function(err){
+                message.channel.send(`${message.author} | Failed to demote.`)
+              });
+            }
+          }).catch(function(err){
+            message.channel.send(`${message.author} | Couldn't get him in the group.`)
+          });
+        }).catch(function(err){ 
+          message.channel.send(`${message.author} | Sorry, but ${username} doesn't exist on ROBLOX.`)
+        });
+        } else {
+          message.channel.send(`${message.author} | Please enter a username.`)
+        }
+        return;
+      }
+    }
+    if(isCommand('GetUser', message)){
+        var username = args[1]
+        if (username){
+            roblox.getIdFromUsername(username)
+            .then function(id){
+            roblox.getRankInGroup(groupId, id)
+                .then function(rank){
+                    message.channel.send(`${message.author} | ${username} (https://www.roblox.com/users/${id}/profile)`)
+                }
+            }
+        } else {
+            message.channel.send(`${message.author} | Please enter a username.`)
+        }
     }
     if(isCommand('Ping', message)){
-    	message.channel.send(`:ok_hand: | **${message.author.username}**, pong!`)
+      message.channel.send(`:ok_hand: | **${message.author.username}**, pong!`)
     }
     if(isCommand('Links', message)){
-    	message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n**Group:** <http://bit.ly/2z9fCKh>\n**Database:** <http://bit.ly/2z9RbfW>\n**Twitter:** <http://bit.ly/2nZ3Sqt>\n**Dropbox:** <http://bit.ly/2pXBbLn>`)
+      message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n**Group:** <http://bit.ly/2z9fCKh>\n**Database:** <http://bit.ly/2z9RbfW>\n**Twitter:** <http://bit.ly/2nZ3Sqt>\n**Dropbox:** <http://bit.ly/2pXBbLn>`)
     }
 }); 
