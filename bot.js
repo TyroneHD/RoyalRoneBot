@@ -191,7 +191,7 @@ client.on('message', (message) => {
         return;
       }
     }
-    if(isCommand('GetUser', message)){
+    if(isCommand('User', message)){
         var username = args[1]
         if (username){
             roblox.getIdFromUsername(username)
