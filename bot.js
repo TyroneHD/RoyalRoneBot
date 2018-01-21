@@ -191,14 +191,14 @@ client.on('message', (message) => {
         return;
       }
     }
-    if(isCommand('User', message)){
+    if(isCommand('GetUser', message)){
         var username = args[1]
         if (username){
             roblox.getIdFromUsername(username)
             .then(function(id){
             roblox.getRankInGroup(groupId, id)
                 .then(function(rank){
-                    message.channel.send(`${message.author} | **${username}** (https://www.roblox.com/users/${id}/profile)`)
+                    message.channel.send(`:ok_hand | **${message.author.username}**, here are their details.\n        :gear:   **${username}**\n        :gear:   **https://www.roblox.com/users/${id}/profile**`)
                 })
             })
         } else {
