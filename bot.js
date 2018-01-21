@@ -61,7 +61,6 @@ roblox.login({username: process.env.USERNAME, password: process.env.PASSWORD}).t
 
 }).catch(() => {console.log("Failed to login.");});
 
-var blacklist = [];
 var groupId = 2720853;
 var maximumRank = 202;
 var minimumRank = 0;
@@ -71,6 +70,11 @@ function isCommand(command, message){
   var content = message.content.toLowerCase();
   return content.startsWith(prefix + command);
 }
+
+function secCommand(command, message){
+  var command = command.toLowerCase();
+  var content = message.content.toLowerCase();
+  return content.startsWith('>' + command);
 
 function isntCommand(command, message){
   var command = command.toLowerCase();
@@ -172,7 +176,7 @@ client.on('message', (message) => {
     if (message.author.bot) return;
     var args = message.content.split(/[, ]+/)
 
-    if(isCommand('!Shout ', message)){
+    if(secCommand('Shout ', message)){
         if(isAdmin(message)){
             var status = args[1]
             roblox.shout(groupId, status)
@@ -180,7 +184,7 @@ client.on('message', (message) => {
         }
         return;
     }
-    if(isCommand('!Message ', message)){
+    if(secCommand('Message ', message)){
         if(isAdmin(message)){
             var username = args[1]
             var subject = args[2]
