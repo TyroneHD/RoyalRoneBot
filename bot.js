@@ -191,6 +191,27 @@ client.on('message', (message) => {
         return;
       }
     }
+    if(isCommand('DDemote', message)){
+        if(isAdmin(message)){
+            var username = args[1]
+            if (username){
+                roblox.getIdFromUsername(username)
+                .then(function(id){
+                    roblox.getRankInGroup(groupId, id)
+                    .then(function(rank){
+                        if (minimumRank >= rank){
+                            message.channel.send(`${message.author} | ${username} is Council and cannot be demoted.`)
+                        } else {
+                            roblox.demote(groupId, id)
+                            .then(function(roles){
+                                message.channel.send(`:ok_hand: | **${message.author.username}**, user has been demoted!\n \n       :file_folder: **${username} (${id})**\n       :file_folder: **${roles.newRole.Name}\n       :link: **<https://www.roblox.com/users/${id}/profile>**`)
+                            })
+                        }
+                    })
+                })
+            }
+        }
+    }
     if(isCommand('User', message)){
         var username = args[1]
         if (username){
@@ -209,6 +230,6 @@ client.on('message', (message) => {
       message.channel.send(`:ok_hand: | **${message.author.username}**, pong!`)
     }
     if(isCommand('Links', message)){
-      message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n       :link: **Group:** <http://bit.ly/2z9fCKh>\n       :link: **Database:** <http://bit.ly/2z9RbfW>\n       :link: **Twitter:** <http://bit.ly/2nZ3Sqt>\n       :link: **Dropbox:** <http://bit.ly/2pXBbLn>`)
+      message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n       :link: **Group: <http://bit.ly/2z9fCKh>**\n       :link: **Database: <http://bit.ly/2z9RbfW>**\n       :link: **Twitter: <http://bit.ly/2nZ3Sqt>**\n       :link: **Dropbox: <http://bit.ly/2pXBbLn>**`)
     }
 }); 
