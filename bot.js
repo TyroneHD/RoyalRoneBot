@@ -198,7 +198,38 @@ client.on('message', (message) => {
             .then(function(id){
             roblox.getRankInGroup(groupId, id)
                 .then(function(rank){
-                    message.channel.send(`:ok_hand | **${message.author.username}**, here are their details.\n        :gear:   **${username}**\n        :gear:   **https://www.roblox.com/users/${id}/profile**`)
+                    .then(function(roles){
+                        var embed = {
+                        "title": "Demotion",
+                        "description": `These are their details.`,
+                        "timestamp": new Date(),
+                        "footer": {
+                        "text": "Created by tyr_hd#9291"
+                        },
+                        "thumbnail": {
+                            "url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
+                        },
+                        "author": {
+                            "name": "The Royal Rone",
+                            "icon_url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
+                        },
+                        "fields": [
+                        {
+                            "name": "Player",
+                            "value": `**[${username}](https://www.roblox.com/users/${id}/profile)**`
+                        },
+                        {
+                            "name": "User Id",
+                            "value": `**${id}**`
+                        },
+                        {
+                            "name": "Player",
+                            "value": `${roles.oldRoles.Name}`
+                        }
+                        ]
+                        };
+                        message.channel.send(`:ok_hand | **${message.author.username}**, here are their details.`, { embed });
+                    })
                 })
             })
         } else {
