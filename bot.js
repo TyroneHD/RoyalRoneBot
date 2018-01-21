@@ -191,39 +191,14 @@ client.on('message', (message) => {
         return;
       }
     }
-    if(isCommand('GetUser', message)){
+    if(isCommand('User', message)){
         var username = args[1]
         if (username){
             roblox.getIdFromUsername(username)
             .then(function(id){
             roblox.getRankInGroup(groupId, id)
                 .then(function(rank){
-                    var embed = {
-                    "title": "Demotion",
-                    "description": `These are their details.`,
-                    "timestamp": new Date(),
-                    "footer": {
-                    "text": "Created by tyr_hd#9291"
-                    },
-                    "thumbnail": {
-                        "url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
-                    },
-                    "author": {
-                        "name": "The Royal Rone",
-                        "icon_url": "https://i.pinimg.com/originals/e5/47/a7/e547a79c6aff6bd9e0193535215e3a1e.jpg"
-                    },
-                    "fields": [
-                    {
-                        "name": "Player",
-                        "value": `**[${username}](https://www.roblox.com/users/${id}/profile)**`
-                    },              
-                    {
-                        "name": "User Id",
-                        "value": `**${id}**`
-                    },
-                    ]
-                    };
-                    message.channel.send(`:ok_hand | **${message.author.username}**, here are their details.`, { embed });
+                    message.channel.send(`:ok_hand: | **${message.author.username}**, here are their details!\n \n**${username}**\n**https://www.roblox.com/users/${id}/profile**`)
                 })
             })
         } else {
