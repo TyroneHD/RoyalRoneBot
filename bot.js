@@ -209,6 +209,6 @@ client.on('message', (message) => {
       message.channel.send(`:ok_hand: | **${message.author.username}**, pong!`)
     }
     if(isCommand('Links', message)){
-      message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n**Group:** <http://bit.ly/2z9fCKh>\n**Database:** <http://bit.ly/2z9RbfW>\n**Twitter:** <http://bit.ly/2nZ3Sqt>\n**Dropbox:** <http://bit.ly/2pXBbLn>`)
+      message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n       :link: **Group:** <http://bit.ly/2z9fCKh>\n       :link: **Database:** <http://bit.ly/2z9RbfW>\n       :link: **Twitter:** <http://bit.ly/2nZ3Sqt>\n       :link: **Dropbox:** <http://bit.ly/2pXBbLn>`)
     }
 }); 
