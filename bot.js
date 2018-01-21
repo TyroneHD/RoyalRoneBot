@@ -155,7 +155,7 @@ client.on('message', (message) => {
     if(isCommand('GetShout', message)){
         roblox.getShout(groupId)
         .then(function(shout){
-            message.channel.send(`:ok_hand: | **${message.author.username}**, here is the current shout!\n \n       :file_folder: **${shout.author.username} (${shout.author.id})**\n       :gear: **${shout.message}**`)
+            message.channel.send(`:ok_hand: | **${message.author.username}**, here is the current shout!\n \n       :file_folder: **${shout.author.name} (${shout.author.id})**\n       :page_facing_up: **${shout.message}**`)
         })
         return;
     }
