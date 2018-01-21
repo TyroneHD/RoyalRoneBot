@@ -152,6 +152,13 @@ client.on('message', (message) => {
         }
         return;
     }
+    if(isCommand('GetShout', message)){
+        roblox.getShout(groupId)
+        .then(function(shout){
+            message.channel.send(`:ok_hand: | **${message.author.username}**, here is the current shout!\n \n       :file_folder: **${shout.author.username} (${shout.author.id})**\n       :gear: **${shout.message}**`)
+        })
+        return;
+    }
     if(isCommand('Ping', message)){
       message.channel.send(`:ok_hand: | **${message.author.username}**, pong!`)
     }
