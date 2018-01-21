@@ -198,7 +198,7 @@ client.on('message', (message) => {
             .then(function(id){
             roblox.getRankInGroup(groupId, id)
                 .then(function(rank){
-                    message.channel.send(`:ok_hand: | **${message.author.username}**, here are their details!\n \n       :file_folder: **${username}**\n       :link: **<https://www.roblox.com/users/${id}/profile>**`)
+                    message.channel.send(`:ok_hand: | **${message.author.username}**, here are their details!\n \n       :file_folder: **${username} (${id})**\n       :link: **<https://www.roblox.com/users/${id}/profile>**`)
                 })
             })
         } else {
