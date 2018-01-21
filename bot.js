@@ -170,7 +170,7 @@ client.on('message', (message) => {
     if(isCommand('Links', message)){
       message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n       :link: **Group: <http://bit.ly/2z9fCKh>**\n       :link: **Database: <http://bit.ly/2z9RbfW>**\n       :link: **Twitter: <http://bit.ly/2nZ3Sqt>**\n       :link: **Dropbox: <http://bit.ly/2pXBbLn>**`)
     }
-}); 
+}; 
 
 client.on('message', (message) => {
     if (message.author.bot) return;
