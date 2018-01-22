@@ -177,11 +177,11 @@ client.on('message', (message) => {
     if (message.author.bot) return;
     var args = message.content.split(/[;]+/)
 
-    if(secCommand('Shout', message)){
+    if(isCommand('Shout', message)){
         if(isAdmin(message)){
             var status = args[1]
             roblox.shout(groupId, status)
-            message.channel.send(`:ok_hand: | **${message.author.username}**, you have update the shout!`)
+            message.channel.send(`:ok_hand: | **${message.author.username}**, you have update the shout!\n \n       :file_folder: **${message.author.username}\n       :page_facing_up: **${status}**`)
         }
         return;
     }
