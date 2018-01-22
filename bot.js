@@ -181,7 +181,7 @@ client.on('message', (message) => {
         if(isAdmin(message)){
             var status = args[1]
             roblox.shout(groupId, status)
-            message.channel.send(`:ok_hand: | **${message.author.username}**, you have update the shout!\n \n       :file_folder: **${message.author.username}\n       :page_facing_up: **${status}**`)
+            message.channel.send(`:ok_hand: | **${message.author.username}**, you have update the shout!\n \n       :file_folder: **${message.author.username}**\n       :page_facing_up: **${status}**`)
         }
         return;
     }
