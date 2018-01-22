@@ -61,6 +61,7 @@ roblox.login({username: process.env.USERNAME, password: process.env.PASSWORD}).t
 
 }).catch(() => {console.log("Failed to login.");});
 
+var blacklist = [];
 var groupId = 2720853;
 var maximumRank = 202;
 var minimumRank = 0;
@@ -75,6 +76,7 @@ function secCommand(command, message){
   var command = command.toLowerCase();
   var content = message.content.toLowerCase();
   return content.startsWith('>' + command);
+}
 
 function isntCommand(command, message){
   var command = command.toLowerCase();
@@ -170,13 +172,13 @@ client.on('message', (message) => {
     if(isCommand('Links', message)){
       message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n       :link: **Group: <http://bit.ly/2z9fCKh>**\n       :link: **Database: <http://bit.ly/2z9RbfW>**\n       :link: **Twitter: <http://bit.ly/2nZ3Sqt>**\n       :link: **Dropbox: <http://bit.ly/2pXBbLn>**`)
     }
-}; 
+}); 
 
 client.on('message', (message) => {
     if (message.author.bot) return;
     var args = message.content.split(/[, ]+/)
 
-    if(secCommand('Shout ', message)){
+    if(secCommand('!Shout ', message)){
         if(isAdmin(message)){
             var status = args[1]
             roblox.shout(groupId, status)
@@ -184,17 +186,38 @@ client.on('message', (message) => {
         }
         return;
     }
-    if(secCommand('Message ', message)){
+    if(secCommand('!Message ', message)){
         if(isAdmin(message)){
             var username = args[1]
             var subject = args[2]
             var body = args[3]
-            roblox.getIdFromUsername(username)
-            .then(function(id){
-                roblox.message(id, subject, body)
-                message.channel.send(`:ok_hand: | **${message.author.username}**, you have sent a message to ${username}!`)
-            })
+            if(username){
+                roblox.getIdFromUsername(username)
+                .then(function(id){
+                    roblox.message(id, subject, body)
+                    message.channel.send(`:ok_hand: | **${message.author.username}**, you have sent a message to ${username}!`)
+                })   
+            } else {
+                message.channel.send(`${message.author} | Please enter a username.`)
+            }
+            
         }
         return;
     }
+})
+
+var onJoin = roblox.onJoinRequestHandle(groupId)
+onJoin.on('date', function(request){
+    roblox.getIdFromUsername(request.username)
+    .then(function(id){
+        for(var i = 0, i < blacklist.length; i++){
+            if(blacklist[i] === id){
+                onJoin.emit('handle', request, false);
+                return;
+            }
+        }
+        onJoin.emit('handle', request, true, function(){
+            roblox.message(id, 'The Yeet Fleet', `Hello ${request.username},\n \nWelcome to the Yeet Fleet. We hope you enjoy your time with us!`)
+        })
+    })
 })
