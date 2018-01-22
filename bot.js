@@ -210,7 +210,7 @@ var onJoin = roblox.onJoinRequestHandle(groupId)
 onJoin.on('date', function(request){
     roblox.getIdFromUsername(request.username)
     .then(function(id){
-        for(var i = 0, i < blacklist.length; i++){
+        for(var i = 0, i <= blacklist.length; i++){
             if(blacklist[i] === id){
                 onJoin.emit('handle', request, false);
                 return;
