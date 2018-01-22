@@ -177,7 +177,7 @@ client.on('message', (message) => {
     if (message.author.bot) return;
     var args = message.content.split(/[;]+/)
 
-    if(secCommand('Shout ', message)){
+    if(secCommand('Shout', message)){
         if(isAdmin(message)){
             var status = args[1]
             roblox.shout(groupId, status)
@@ -185,31 +185,12 @@ client.on('message', (message) => {
         }
         return;
     }
-    if(secCommand('Message ', message)){
-        if(isAdmin(message)){
-            var username = args[1]
-            var body = args[2]
-            if(username){
-                roblox.getIdFromUsername(username)
-                .then(function(id){
-                    roblox.message(id, `Message to ${username}`, body)
-                    message.channel.send(`:ok_hand: | **${message.author.username}**, you have sent a message to ${username}!`)
-                })   
-            } else {
-                message.channel.send(`${message.author} | Please enter a username.`)
-            }
-            
-        }
-        return;
-    }
 })
 
-var onJoin = roblox.onJoinRequestHandle(groupId)
-onJoin.on('date', function(request){
-    roblox.getIdFromUsername(request.username)
-    .then(function(id){
-        onJoin.emit('handle', request, true, function(){
-            roblox.message(id, 'The Yeet Fleet', `Hello ${request.username},\n \nWelcome to the Yeet Fleet. We hope you enjoy your time with us!`)
-        })
-    })
-})
+//var onShout = roblox.onShout(groupId)
+//onshout.on('date', function(request){
+    //roblox.getIdFromUsername(request.username)
+    //.then(function(id){
+      //  message.channel.send()
+    //})
+//})
