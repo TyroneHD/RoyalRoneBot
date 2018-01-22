@@ -148,10 +148,7 @@ client.on('message', (message) => {
         if (username){
             roblox.getIdFromUsername(username)
             .then(function(id){
-            roblox.getRankNameInGroup(groupId, id)
-                .then(function(rank){
-                    message.channel.send(`:ok_hand: | **${message.author.username}**, here are their details!\n \n       :file_folder: **${username} (${id})**\n       :file_folder: **${rank.Name}**\n       :link: **<https://www.roblox.com/users/${id}/profile>**`)
-                })
+                message.channel.send(`:ok_hand: | **${message.author.username}**, here are their details!\n \n       :file_folder: **${username} (${id})**\n       :link: **<https://www.roblox.com/users/${id}/profile>**`)
             })
         } else {
             message.channel.send(`${message.author} | Please enter a username.`)
