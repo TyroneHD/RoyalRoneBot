@@ -175,7 +175,7 @@ client.on('message', (message) => {
 
 client.on('message', (message) => {
     if (message.author.bot) return;
-    var args = message.content.split(/[,]+/)
+    var args = message.content.split(/[;]+/)
 
     if(secCommand('Shout ', message)){
         if(isAdmin(message)){
@@ -188,12 +188,11 @@ client.on('message', (message) => {
     if(secCommand('Message ', message)){
         if(isAdmin(message)){
             var username = args[1]
-            var subject = args[2]
-            var body = args[3]
+            var body = args[2]
             if(username){
                 roblox.getIdFromUsername(username)
                 .then(function(id){
-                    roblox.message(id, subject, body)
+                    roblox.message(id, `Message to ${username}`, body)
                     message.channel.send(`:ok_hand: | **${message.author.username}**, you have sent a message to ${username}!`)
                 })   
             } else {
