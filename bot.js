@@ -175,9 +175,9 @@ client.on('message', (message) => {
 
 client.on('message', (message) => {
     if (message.author.bot) return;
-    var args = message.content.split(/[, ]+/)
+    var args = message.content.split(/[,]+/)
 
-    if(secCommand('!Shout ', message)){
+    if(secCommand('Shout ', message)){
         if(isAdmin(message)){
             var status = args[1]
             roblox.shout(groupId, status)
@@ -185,7 +185,7 @@ client.on('message', (message) => {
         }
         return;
     }
-    if(secCommand('!Message ', message)){
+    if(secCommand('Message ', message)){
         if(isAdmin(message)){
             var username = args[1]
             var subject = args[2]
