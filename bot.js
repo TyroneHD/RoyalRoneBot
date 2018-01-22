@@ -61,7 +61,6 @@ roblox.login({username: process.env.USERNAME, password: process.env.PASSWORD}).t
 
 }).catch(() => {console.log("Failed to login.");});
 
-var blacklist = [];
 var groupId = 2720853;
 var maximumRank = 202;
 var minimumRank = 0;
@@ -210,12 +209,6 @@ var onJoin = roblox.onJoinRequestHandle(groupId)
 onJoin.on('date', function(request){
     roblox.getIdFromUsername(request.username)
     .then(function(id){
-        for(var i = 0, i <= blacklist.length; i++){
-            if(blacklist[i] === id){
-                onJoin.emit('handle', request, false);
-                return;
-            }
-        }
         onJoin.emit('handle', request, true, function(){
             roblox.message(id, 'The Yeet Fleet', `Hello ${request.username},\n \nWelcome to the Yeet Fleet. We hope you enjoy your time with us!`)
         })
