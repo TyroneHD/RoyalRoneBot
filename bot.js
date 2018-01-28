@@ -184,7 +184,7 @@ client.on('message', (message) => {
             var channel = guild.channels.find('name','announcements')
             roblox.shout(groupId, status)
             message.channel.send(`:ok_hand: | **${message.author.username}**, you have update the shout!\n \n       :file_folder: **${message.author.username}**\n       :page_facing_up: **${status}**`)
-            channel.send(`<@&315947358103928832> A new shout has been posted!\n \n       :file_folder: **-${message.author.username}**\n       :page_facing_up: **${status}**`)
+            channel.send(`<@&315947358103928832> A new shout has been posted!\n \n       :file_folder: **${message.author.username}**\n       :page_facing_up: **${status}**`)
         }
         return;
     }
