@@ -187,20 +187,20 @@ client.on('message', (message) => {
         var x = getRandomInt(0, 20);
         if (x < 5){ 
             if (x < 3){
-                msg.channel.sendMessage(msg1[1]);
+                message.channel.send(msg1[1]);
             } else {
-                msg.channel.sendMessage(msg1[3]);
+                message.channel.send(msg1[3]);
             }
         } else if (x<= 9) {
             if (x >= 7){
-                msg.channel.sendMessage(msg1[2]); 
+                message.channel.send(msg1[2]); 
             } else {
-                msg.channel.sendMessage(msg1[4]);
+                message.channel.send(msg1[4]);
             }
         } else if (x <= 12 ) { 
-            msg.channel.sendMessage(msg1[5]);
+            message.channel.send(msg1[5]);
         } else {
-            msg.channel.sendMessage(msg1[6])
+            message.channel.send(msg1[6])
         }
     }
 }); 
