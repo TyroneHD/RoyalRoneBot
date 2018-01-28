@@ -4,6 +4,11 @@ var client = new discord.Client();
 
 client.login(process.env.BOT_TOKEN)
 
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
 
 client.on("ready", () => {
   client.user.setGame(`tyr_hd#9291`);
