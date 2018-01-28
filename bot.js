@@ -180,7 +180,8 @@ client.on('message', (message) => {
     if(isCommand('Shout', message)){
         if(isAdmin(message)){
             var status = args[1]
-            var channel = message.guild.channels.find('name','bot-commands')
+            var guild = message.guild
+            var channel = guild.channels.find('name','bot-commands')
             roblox.shout(groupId, status)
             message.channel.send(`:ok_hand: | **${message.author.username}**, you have update the shout!\n \n       :file_folder: **${message.author.username}**\n       :page_facing_up: **${status}**`)
             channel.send(`${status}\n \nBy **${message.author.username}**`)
