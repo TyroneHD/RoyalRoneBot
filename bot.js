@@ -171,7 +171,7 @@ client.on('message', (message) => {
       message.channel.send(`:ok_hand: | **${message.author.username}**, pong!`)
     }
     if(isCommand('Links', message)){
-      message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n       :link: **Group: <http://bit.ly/2z9fCKh>**\n       :link: **Database: <http://bit.ly/2z9RbfW>**\n       :link: **Twitter: <http://bit.ly/2nZ3Sqt>**\n       :link: **Dropbox: <http://bit.ly/2pXBbLn>**`)
+      message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n       :link: **Group: <http://bit.ly/2z9fCKh>**\n       :link: **Database: <http://bit.ly/2z9RbfW>**\n       :link: **Twitter: <http://bit.ly/2nZ3Sqt>**\n       :link: **Dropbox: <http://bit.ly/2pXBbLn>**\n       :link: **YF Pin: <http://bit.ly/2BUEbJ2>**`)
     }
     if(isCommand('Cmds', message)){
       message.channel.send(`:ok_hand: | **${message.author.username}**, here are all the commands!\n \n       :file_folder: **Council Commands**\n       :page_facing_up: **!promote [string]**\n       :page_facing_up: **!demote [string]**\n       :page_facing_up: **!shout;[string]**\n \n       :file_folder: **Global Commands**\n       :page_facing_up: **!user [string]**\n       :page_facing_up: **!getshout**\n       :page_facing_up: **!links**\n       :page_facing_up: **!ping**`)
