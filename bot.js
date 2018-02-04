@@ -167,6 +167,12 @@ client.on('message', (message) => {
         })
         return;
     }
+    if(isCommand('Challenge', message)){
+        var user = message.mentions.members.first();
+        if (username){
+            user.send(`:ok_hand: | **${user.username}**, ${message.author.username} has challenged you to a 1v1.`)
+        }
+    }
     if(isCommand('Ping', message)){
       message.channel.send(`:ok_hand: | **${message.author.username}**, pong!`)
     }
