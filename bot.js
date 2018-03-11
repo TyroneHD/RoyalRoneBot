@@ -4,12 +4,6 @@ var client = new discord.Client();
 
 client.login(process.env.BOT_TOKEN)
 
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
 client.on("ready", () => {
   client.user.setGame(`tyr_hd#9291`);
   console.log(`Ready to serve on ${client.guilds.size} servers, for ${client.users.size} users.`);
@@ -54,13 +48,6 @@ function isAdmin(message){
     return false;
   }
 }
-client.on('message', (message) => {
-
-if (isAdmin(message)){
-console.log('Is an admin!')
-}
-
-})
 
 roblox.login({username: process.env.USERNAME, password: process.env.PASSWORD}).then((success) => {
 
@@ -76,12 +63,6 @@ function isCommand(command, message){
   return content.startsWith(prefix + command);
 }
 
-function secCommand(command, message){
-  var command = command.toLowerCase();
-  var content = message.content.toLowerCase();
-  return content.startsWith('>' + command);
-}
-
 function isntCommand(command, message){
   var command = command.toLowerCase();
   var content = message.content.toLowerCase();
@@ -90,8 +71,7 @@ function isntCommand(command, message){
 
 client.on('message', (message) => {
   if (message.author.bot) return; // Dont answer yourself.
-    //var args = message.content.split(/[ ]+/)
-    var args = message.content.slice(prefix.length).trim().split(/ +/g);
+    var args = message.content.split(/[ ]+/)
     
     if(isCommand('Promote', message)){
         if(isAdmin(message)){
@@ -161,12 +141,6 @@ client.on('message', (message) => {
         }
         return;
     }
-    if(isCommand('rbx', message)){
-        if(isAdmin(message)){
-            var ShoutMSG = args.join(" ");
-            message.channel.send(`thx lol ${ShoutMSG}`)
-        }
-    }
     if(isCommand('GetShout', message)){
         roblox.getShout(groupId)
         .then(function(shout){
@@ -181,34 +155,7 @@ client.on('message', (message) => {
       message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n       :link: **Group: <http://bit.ly/2z9fCKh>**\n       :link: **Database: <http://bit.ly/2z9RbfW>**\n       :link: **Twitter: <http://bit.ly/2nZ3Sqt>**\n       :link: **Dropbox: <http://bit.ly/2pXBbLn>**\n       :link: **YF Pin: <http://bit.ly/2BUEbJ2>**`)
     }
     if(isCommand('Cmds', message)){
-      message.channel.send(`:ok_hand: | **${message.author.username}**, here are all the commands!\n \n       :file_folder: **Council Commands**\n       :page_facing_up: **!promote [string]**\n       :page_facing_up: **!demote [string]**\n       :page_facing_up: **!shout;[string]**\n \n       :file_folder: **Global Commands**\n       :page_facing_up: **!user [string]**\n       :page_facing_up: **!getshout**\n       :page_facing_up: **!8ball [string]**\n       :page_facing_up: **!cmds**\n       :page_facing_up: **!links**\n       :page_facing_up: **!ping**`)
-    }
-    if(isCommand('8ball', message)){
-        var msg1 = Array(5); 
-        msg1[1] = "Yes";
-        msg1[2] = "No";
-        msg1[3] = "Maybe :wink:";
-        msg1[4] = "Without a doubt.";
-        msg1[5] = "I Honestly Have No Idea :neutral_face:"
-        msg1[6] = "Highly Unlikely" 
-        var x = getRandomInt(0, 20);
-        if (x < 5){ 
-            if (x < 3){
-                message.channel.send(msg1[1]);
-            } else {
-                message.channel.send(msg1[3]);
-            }
-        } else if (x<= 9) {
-            if (x >= 7){
-                message.channel.send(msg1[2]); 
-            } else {
-                message.channel.send(msg1[4]);
-            }
-        } else if (x <= 12 ) { 
-            message.channel.send(msg1[5]);
-        } else {
-            message.channel.send(msg1[6])
-        }
+      message.channel.send(`:ok_hand: | **${message.author.username}**, here are all the commands!\n \n       :file_folder: **Council Commands**\n       :page_facing_up: **!promote [string]**\n       :page_facing_up: **!demote [string]**\n       :page_facing_up: **!shout;[string]**\n \n       :file_folder: **Global Commands**\n       :page_facing_up: **!user [string]**\n       :page_facing_up: **!getshout**\n       :page_facing_up: **!cmds**\n       :page_facing_up: **!links**\n       :page_facing_up: **!ping**`)
     }
 }); 
 
@@ -218,7 +165,7 @@ client.on('message', (message) => {
 
     if(isCommand('Shout', message)){
         if(isAdmin(message)){
-            var status = args[1]
+            var status = args[arguments.length]
             var guild = message.guild
             var channel = guild.channels.find('name','announcements')
             roblox.shout(groupId, status)
