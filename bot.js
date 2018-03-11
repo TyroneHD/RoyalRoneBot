@@ -90,7 +90,8 @@ function isntCommand(command, message){
 
 client.on('message', (message) => {
   if (message.author.bot) return; // Dont answer yourself.
-    var args = message.content.split(/[ ]+/)
+    //var args = message.content.split(/[ ]+/)
+    var args = message.content.slice(prefix.length).trim().split(/ +/g);
     
     if(isCommand('Promote', message)){
         if(isAdmin(message)){
