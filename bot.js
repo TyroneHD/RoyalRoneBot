@@ -161,7 +161,7 @@ client.on('message', (message) => {
 
 client.on('message', (message) => {
     if (message.author.bot) return;
-    var args = message.content.split(/[;]+/)
+    var args = message.content.split(/[ ]+/)
 
     if(isCommand('Shout', message)){
         if(isAdmin(message)){
