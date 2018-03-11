@@ -151,7 +151,7 @@ client.on('message', (message) => {
         return;
     }
     if(isCommand('Ping', message)){
-      message.channel.send(`:ok_hand: | **${message.author.username}**, pong!`)
+      message.channel.send(`:ok_hand: | **${message.author.username}**, ${client.ping}!`)
     }
     if(isCommand('Links', message)){
       message.channel.send(`:ok_hand: | **${message.author.username}**, here are some important links!\n \n       :link: **Group: <http://bit.ly/2z9fCKh>**\n       :link: **Database: <http://bit.ly/2z9RbfW>**\n       :link: **Twitter: <http://bit.ly/2nZ3Sqt>**\n       :link: **Dropbox: <http://bit.ly/2pXBbLn>**\n       :link: **YF Pin: <http://bit.ly/2BUEbJ2>**`)
