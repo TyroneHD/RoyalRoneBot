@@ -84,7 +84,7 @@ client.on('message', (message) => {
                     roblox.getRankInGroup(groupId, id)
                     .then(function(rank){
                         if (maximumRank <= rank){
-                            message.channel.send(`${message.author} | ${username} is Council and cannot be promoted.`)
+                            message.channel.send(`${message.author} | ${username} cannot be promoted.`)
                         } else {
                             roblox.promote(groupId, id)
                             .then(function(roles){
@@ -112,7 +112,7 @@ client.on('message', (message) => {
                     roblox.getRankInGroup(groupId, id)
                     .then(function(rank){
                         if (minimumRank >= rank){
-                            message.channel.send(`${message.author} | ${username} is Council and cannot be demoted.`)
+                            message.channel.send(`${message.author} | ${username} cannot be demoted.`)
                         } else {
                             roblox.demote(groupId, id)
                             .then(function(roles){
