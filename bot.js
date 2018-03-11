@@ -160,6 +160,12 @@ client.on('message', (message) => {
         }
         return;
     }
+    if(isCommand('rbx', message)){
+        if(isAdmin(message)){
+            var ShoutMSG = args.join(" ");
+            message.channel.send(`thx lol ${ShoutMSG}`)
+        }
+    }
     if(isCommand('GetShout', message)){
         roblox.getShout(groupId)
         .then(function(shout){
