@@ -161,11 +161,11 @@ client.on('message', (message) => {
 
 client.on('message', (message) => {
     if (message.author.bot) return;
-    var args = message.content.split(/[ ]+/)
+    var args = message.content.split(/[;]+/)
 
     if(isCommand('Shout', message)){
         if(isAdmin(message)){
-            var status = args[arguments.length]
+            var status = args[1]
             var guild = message.guild
             var channel = guild.channels.find('name','announcements')
             roblox.shout(groupId, status)
