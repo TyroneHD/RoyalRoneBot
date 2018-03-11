@@ -1,3 +1,5 @@
+//@tyr_hd#9291
+
 var discord = require('discord.js');
 var roblox = require('roblox-js');
 var client = new discord.Client();
