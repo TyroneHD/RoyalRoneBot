@@ -2,7 +2,6 @@
 
 var discord = require('discord.js');
 var roblox = require('roblox-js');
-var ms = require('ms');
 var client = new discord.Client();
 
 client.login(process.env.BOT_TOKEN)
