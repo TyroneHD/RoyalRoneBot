@@ -137,7 +137,7 @@ client.on('message', (message) => {
         var muteRole = message.guild.roles.find('name', 'Muted');
         if (username){
             if (muteRole){
-                username.addRole(muteRole.id)
+                username.addRole(muteRole)
                 message.channel.send(`${username} has been muted.`)
             } else {
                 message.channel.send(`${message.author} | There is no mute role.`)
@@ -151,7 +151,7 @@ client.on('message', (message) => {
         var muteRole = message.guild.roles.find('name', 'Muted');
         if (username){
             if (muteRole){
-                username.removeRole(muteRole.id)
+                username.removeRole(muteRole)
                 message.channel.send(`${username} has been unmuted.`)
             } else {
                 message.channel.send(`${message.author} | There is no mute role.`)
