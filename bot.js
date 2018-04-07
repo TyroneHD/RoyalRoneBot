@@ -2,6 +2,7 @@
 
 var discord = require('discord.js');
 var roblox = require('roblox-js');
+var ms = require('ms');
 var client = new discord.Client();
 
 client.login(process.env.BOT_TOKEN)
@@ -129,6 +130,34 @@ client.on('message', (message) => {
                 message.channel.send(`${message.author} | Please enter a username.`)
             }
             return;
+        }
+    }
+    if(isCommand('Mute', message)){
+        var username = message.mentions.member.first();
+        var muteRole = message.guild.roles.find('name', 'Muted');
+        if (username){
+            if (muteRole){
+                member.addRole(muteRole.id)
+                message.channel.send(`${username} has been muted.`)
+            } else {
+                message.channel.send(`${message.author} | There is no mute role.`)
+            }
+        } else {
+            message.channel.send(`${message.author} | Please mention a user.`)
+        }
+    }
+    if(isCommand('Unmute', message)){
+        var username = message.mentions.member.first();
+        var muteRole = message.guild.roles.find('name', 'Muted');
+        if (username){
+            if (muteRole){
+                member.removeRole(muteRole.id)
+                message.channel.send(`${username} has been unmuted.`)
+            } else {
+                message.channel.send(`${message.author} | There is no mute role.`)
+            }
+        } else {
+            message.channel.send(`${message.author} | Please mention a user.`)
         }
     }
     if(isCommand('User', message)){
