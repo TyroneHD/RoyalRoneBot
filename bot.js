@@ -2,6 +2,7 @@
 
 var discord = require('discord.js');
 var roblox = require('roblox-js');
+var ms = require('ms');
 var client = new discord.Client();
 
 client.login(process.env.BOT_TOKEN)
@@ -132,7 +133,7 @@ client.on('message', (message) => {
         }
     }
     if(isCommand('Mute', message)){
-        var username = message.mentions.member.first();
+        var username = message.mentions.members.first();
         var muteRole = message.guild.roles.find('name', 'Muted');
         if (username){
             if (muteRole){
@@ -146,7 +147,7 @@ client.on('message', (message) => {
         }
     }
     if(isCommand('Unmute', message)){
-        var username = message.mentions.member.first();
+        var username = message.mentions.members.first();
         var muteRole = message.guild.roles.find('name', 'Muted');
         if (username){
             if (muteRole){
