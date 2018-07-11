@@ -72,10 +72,10 @@ function isntCommand(command, message){
 }
 
 client.on('message', (message) => {
-    var msgreplies = ["I know where you live.","Ping me again and I'm banning you.","I'm telling Tyrone.","I don't care.","Talk to my hand.","Want to get demoted?","You're not getting promoted.","Don't talk to me with that crusty hairline."];
+    var msgreplies = ["I know where you live.","Ping me again and I'm banning you.","I'm telling Tyrone.","I don't care.","Talk to my hand.","Want to get demoted?","You're not getting promoted.","Don't talk to me with that crusty hairline.","Your IQ is lower all of beastyboy1029's girlfriends standards","Not even coolblaster is as stupid as you.","Did you fall from heaven, because you're messed up."];
     var response = msgreplies[Math.floor(Math.random()*msgreplies.length)];
     if (message.isMentioned(client.user)) {
-        message.reply(response);
+        message.channel.send(response);
     }
 })
 
