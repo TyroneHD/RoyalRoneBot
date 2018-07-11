@@ -76,7 +76,7 @@ client.on('message', (message) => {
     var response = msgreplies[Math.floor(Math.random()*msgreplies.length)];
     var banmsgs = ["@Rone_Bot#6484 demote me","demote me @Rone_Bot#6484","demote @Rone_Bot#6484 me"];
     if(banmsgs, message){
-        var member = message.author
+        var member = message.member
         var Role = message.guild.roles.find('name', 'Verified');
         if(member){
            if(Role){
