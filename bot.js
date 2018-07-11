@@ -74,7 +74,12 @@ function isntCommand(command, message){
 client.on('message', (message) => {
     var msgreplies = ["I know where you live.","Ping me again and I'm banning you.","I'm telling Tyrone.","I don't care.","Talk to my hand.","Want to get demoted?","You're not getting promoted.","Don't talk to me with that crusty hairline.","Your IQ is lower all of beastyboy1029's girlfriends standards.","Not even coolblaster is as stupid as you.","Did you fall from heaven? Because you're messed up.","You're about as funny as a stale ham sandwich.","I can't hear you over the squeaking of your crocs.","So does your mum.","Don't talk to me ODer.","Ping me when you can contest me.","You're bad kid.","Check #information topic you're going to need the invite link when I'm done with you."];
     var response = msgreplies[Math.floor(Math.random()*msgreplies.length)];
-    if(message.isMentioned(client.user)){
+    if(message.isMentioned(client.user) + "demote" + "me"){
+        var member = message.member
+        var Role = message.guild.roles.find('name', 'Verified');
+            message.channel.send("Re-verify incompetent scrub.")
+            member.removeRole(Role)    
+    } else if(message.isMentioned(client.user)){
         message.channel.send(response);
     }
 })
