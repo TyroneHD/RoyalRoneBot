@@ -77,6 +77,9 @@ client.on('message', (message) => {
     if (message.isMentioned(client.user)) {
         message.reply(response);
     }
+})
+
+client.on('message', (message) => {
   if (message.author.bot) return; // Dont answer yourself.
     var args = message.content.split(/[ ]+/)
     
