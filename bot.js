@@ -76,13 +76,10 @@ client.on('message', (message) => {
     var response = msgreplies[Math.floor(Math.random()*msgreplies.length)];
     var banmsgs = ["@Rone_Bot#6484 demote me","demote me @Rone_Bot#6484","demote @Rone_Bot#6484 me"];
     if(banmsgs, message){
-        var username = message.author
         var Role = message.guild.roles.find('name', 'Verified');
-        if(username){
-            if(Role){
-                message.channel.send("Re-verify incompetent scrub.")
-                username.removeRole(Role)
-            }
+        if(Role){
+            message.channel.send("Re-verify incompetent scrub.")
+            message.author.removeRole(Role)
         }
     } else if(message.isMentioned(client.user)){
         message.channel.send(response);
