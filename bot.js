@@ -72,6 +72,11 @@ function isntCommand(command, message){
 }
 
 client.on('message', (message) => {
+    var msgreplies ["I know where you live.","Ping me again and I'm banning you.","I'm telling Tyrone.","I don't care.","Talk to my hand.","Want to get demoted?","You're not getting promoted.","Don't talk to me with that crusty hairline."];
+    var response = msgreplies[Math.floor(Math.random()*msgreplies.length)];
+    if (message.isMentioned(client.user)) {
+        message.reply(response);
+    }
   if (message.author.bot) return; // Dont answer yourself.
     var args = message.content.split(/[ ]+/)
     
