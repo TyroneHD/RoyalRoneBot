@@ -83,7 +83,7 @@ client.on('message', (message) => {
                 message.channel.send("Re-verify incompetent scrub.")
                 username.removeRole(muteRole)
             }
-        } else (message.isMentioned(client.user)) {
+        } else if (message.isMentioned(client.user)) {
             message.channel.send(response);
     }
 }
